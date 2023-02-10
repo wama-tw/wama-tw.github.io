@@ -2,9 +2,54 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>你好，GitHub</title>
+    <title>Wama</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <h1>HELLO GITHUB</h1>
+  <div class="flex w-full h-full bg-scroll bg-gradient-to-br from-slate-800 to-blue-900">
+    <div class="flex items-stretch justify-around w-full h-screen">
+      <div class="self-center h-fit text-7xl font-bold text-slate-100">
+        <div class="showup transition-all ease-out duration-1000 delay-100" style="filter: drop-shadow(2px 2px 3px rgb(168, 207, 249));">Hello, 👋</div>
+        <div class="flex ml-7 showup transition-all ease-out duration-1000 delay-300">
+          I'm <div class="flex text-9xl font-extrabold mx-3"><span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Wama</span></div>
+        </div>
+      </div>
+      <div class="flex items-stretch w-1/2">
+        <div class="self-center">
+          <img class="object-cover" src="/docs/assets/computer.PNG" alt="一張圖片">
+        </div>
+      </div>
+    </div>
+
+  </div>
   </body>
+
+  <script>
+    var showupElements = document.getElementsByClassName('showup');
+    Array.from(showupElements).forEach(function(element) {
+      ['resize','scroll','load'].forEach(eventName => {
+        window.addEventListener(eventName, event => {
+          if (isScrolledIntoView(element)) {
+            console.log('test');
+            element.classList.add('translate-x-8');
+          } else {
+            console.log('nope');
+          }
+        });
+      });
+    });
+    
+    // Borrowed from https://stackoverflow.com/a/22480938/12771340
+    function isScrolledIntoView(el) {
+      let rect = el.getBoundingClientRect();
+      let elemTop = rect.top;
+      let elemBottom = rect.bottom;
+
+      // Only completely visible elements return true:
+      let isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+      // Partially visible elements return true:
+      //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+      return isVisible;
+    }
+  </script>
 </html>
